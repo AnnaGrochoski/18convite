@@ -23,7 +23,7 @@ body {
 
     font-family: "Poppins", sans-serif;
 
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 
@@ -35,8 +35,7 @@ body {
 
     position: fixed;
 
-    top: 0;
-    left: 0;
+    inset: 0;
 
     width: 100vw;
     height: 100vh;
@@ -51,12 +50,12 @@ body {
 
     mix-blend-mode: multiply;
 
-    opacity: 0.9;
+    opacity: .9;
 }
 
 
 /* =====================================================
-   ABERTURA DO CONVITE
+   ABERTURA
 ===================================================== */
 
 .abertura {
@@ -73,15 +72,82 @@ body {
     align-items: center;
     justify-content: center;
 
-    background: #eee3d7;
+    background:
+        linear-gradient(
+            rgba(247, 241, 232, .86),
+            rgba(247, 241, 232, .86)
+        );
 
     z-index: 9999;
 
-    perspective: 1400px;
+    perspective: 1600px;
 
     transition:
-        opacity 1s ease,
-        visibility 1s ease;
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+
+.abertura.finalizada {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   CENA
+===================================================== */
+
+.cena-envelope {
+
+    position: relative;
+
+    width: min(82vw, 390px);
+
+    height: min(125vw, 590px);
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: center;
+
+    perspective: 1600px;
+}
+
+
+/* =====================================================
+   SOMBRA
+===================================================== */
+
+.sombra-envelope {
+
+    position: absolute;
+
+    bottom: 3%;
+
+    left: 50%;
+
+    width: 78%;
+
+    height: 7%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(75, 49, 35, .18);
+
+    filter: blur(18px);
+
+    border-radius: 50%;
+
+    transition:
+        transform 1.2s ease,
+        opacity 1s ease;
 }
 
 
@@ -89,22 +155,29 @@ body {
    ENVELOPE
 ===================================================== */
 
-.envelope-container {
+.envelope {
 
-    position: relative;
+    position: absolute;
 
-    width: min(86vw, 430px);
+    bottom: 8%;
 
-    height: min(58vw, 287px);
+    left: 50%;
 
-    max-height: 75vh;
+    width: 100%;
+
+    height: 74%;
+
+    transform:
+        translateX(-50%);
 
     transform-style: preserve-3d;
+
+    z-index: 10;
 }
 
 
 /* =====================================================
-   FUNDO DO ENVELOPE
+   FUNDO
 ===================================================== */
 
 .envelope-fundo {
@@ -113,62 +186,132 @@ body {
 
     inset: 0;
 
-    background: #f7eee5;
+    background:
+        linear-gradient(
+            135deg,
+            #f7e9dc,
+            #ead8c9
+        );
 
-    border-radius: 4px;
+    border-radius: 5px;
 
     box-shadow:
-        0 20px 50px rgba(70, 45, 30, 0.20);
+        0 25px 55px rgba(71, 45, 32, .18);
 
     z-index: 1;
 }
 
 
 /* =====================================================
-   CONVITE DENTRO DO ENVELOPE
+   ABA TRASEIRA
 ===================================================== */
 
-.convite-papel {
+.aba-traseira {
 
     position: absolute;
 
-    left: 12%;
+    inset: 0;
 
-    bottom: 3%;
+    background: #e6d3c3;
 
-    width: 76%;
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 52%
+        );
 
-    height: 92%;
-
-    background: #faf6ed;
-
-    overflow: hidden;
-
-    border-radius: 3px;
-
-    box-shadow:
-        0 10px 30px rgba(70, 45, 30, 0.15);
-
-    z-index: 3;
-
-    transform:
-        translateY(15%)
-        scale(.96);
-
-    transition:
-        transform 1.3s cubic-bezier(.22, 1, .36, 1),
-        box-shadow 1s ease;
+    z-index: 2;
 }
 
 
-.convite-papel img {
+/* =====================================================
+   ABA ESQUERDA
+===================================================== */
 
-    display: block;
+.aba-esquerda {
 
-    width: 100%;
-    height: 100%;
+    position: absolute;
 
-    object-fit: cover;
+    inset: 0;
+
+    background: #f0dfd1;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 50%,
+            0 100%
+        );
+
+    transform-origin: left center;
+
+    z-index: 5;
+
+    transition:
+        transform 1s cubic-bezier(.65, 0, .35, 1);
+}
+
+
+/* =====================================================
+   ABA DIREITA
+===================================================== */
+
+.aba-direita {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #f4e6db;
+
+    clip-path:
+        polygon(
+            100% 0,
+            50% 50%,
+            100% 100%
+        );
+
+    transform-origin: right center;
+
+    z-index: 5;
+
+    transition:
+        transform 1s cubic-bezier(.65, 0, .35, 1);
+}
+
+
+/* =====================================================
+   ABA INFERIOR
+===================================================== */
+
+.aba-inferior {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8eee5,
+            #eeddd0
+        );
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 50%,
+            100% 100%
+        );
+
+    transform-origin: bottom center;
+
+    z-index: 8;
+
+    transition:
+        transform .9s cubic-bezier(.65, 0, .35, 1),
+        opacity .6s ease;
 }
 
 
@@ -187,108 +330,176 @@ body {
 
     height: 58%;
 
-    background: #e9dbce;
+    background:
+        linear-gradient(
+            145deg,
+            #f3e2d4,
+            #dfcabb
+        );
 
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
 
     transform-origin: top center;
 
-    z-index: 8;
+    z-index: 12;
 
     backface-visibility: hidden;
 
     transition:
-        transform 1s cubic-bezier(.65, 0, .35, 1);
+        transform 1.15s cubic-bezier(.65, 0, .35, 1);
 }
 
 
 /* =====================================================
-   ABA ESQUERDA
+   CONVITE QUE ESTÁ DENTRO
 ===================================================== */
 
-.aba-esquerda {
+.convite-saindo {
 
     position: absolute;
 
-    inset: 0;
+    left: 8%;
 
-    background: #f1e2d5;
+    bottom: 9%;
 
-    clip-path: polygon(
-        0 0,
-        50% 50%,
-        0 100%
-    );
+    width: 84%;
 
-    transform-origin: left center;
+    height: 94%;
 
-    z-index: 7;
+    overflow: hidden;
+
+    background: #faf6ed;
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 12px 35px rgba(65, 43, 32, .18);
+
+    z-index: 4;
+
+    transform:
+        translateY(12%)
+        scale(.88);
+
+    opacity: 1;
 
     transition:
-        transform .9s cubic-bezier(.65, 0, .35, 1);
+        transform 1.5s cubic-bezier(.22, 1, .36, 1),
+        box-shadow 1s ease;
+}
+
+
+.convite-saindo img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
 }
 
 
 /* =====================================================
-   ABA DIREITA
+   LAÇO
 ===================================================== */
 
-.aba-direita {
+.laco {
 
     position: absolute;
 
-    inset: 0;
+    left: 50%;
+    top: 51%;
 
-    background: #f4e7dc;
+    width: 95px;
+    height: 65px;
 
-    clip-path: polygon(
-        100% 0,
-        50% 50%,
-        100% 100%
-    );
+    transform:
+        translate(-50%, -50%);
 
-    transform-origin: right center;
-
-    z-index: 7;
+    z-index: 25;
 
     transition:
-        transform .9s cubic-bezier(.65, 0, .35, 1);
+        opacity .5s ease,
+        transform .7s ease;
 }
 
 
-/* =====================================================
-   ABA DA FRENTE
-===================================================== */
+/* lado esquerdo */
 
-.aba-frente {
+.laco-esquerdo {
 
     position: absolute;
 
-    inset: 0;
+    left: 0;
+    top: 8px;
 
-    background: #f8eee5;
+    width: 48px;
+    height: 43px;
 
-    clip-path: polygon(
-        0 100%,
-        50% 50%,
-        100% 100%
-    );
+    background: #d77966;
 
-    z-index: 9;
+    border-radius:
+        65% 20% 65% 20%;
 
-    pointer-events: none;
+    transform:
+        rotate(28deg);
+}
 
-    transition:
-        opacity .5s ease;
+
+/* lado direito */
+
+.laco-direito {
+
+    position: absolute;
+
+    right: 0;
+    top: 8px;
+
+    width: 48px;
+    height: 43px;
+
+    background: #d77966;
+
+    border-radius:
+        20% 65% 20% 65%;
+
+    transform:
+        rotate(-28deg);
+}
+
+
+/* centro */
+
+.laco-centro {
+
+    position: absolute;
+
+    left: 50%;
+    top: 22px;
+
+    width: 24px;
+    height: 24px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #bd624f;
+
+    box-shadow:
+        0 3px 7px rgba(80, 40, 30, .18);
 }
 
 
 /* =====================================================
-   BOTÃO DE ABRIR
+   BOTÃO
 ===================================================== */
 
 .botao-abrir {
@@ -296,16 +507,16 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 50%;
+    bottom: 13%;
 
     transform:
-        translate(-50%, -50%);
+        translateX(-50%);
 
-    z-index: 30;
+    z-index: 40;
 
     border: none;
 
-    padding: 15px 27px;
+    padding: 14px 27px;
 
     border-radius: 50px;
 
@@ -315,14 +526,16 @@ body {
 
     font-family: "Poppins", sans-serif;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 2px;
+
+    white-space: nowrap;
 
     cursor: pointer;
 
     box-shadow:
-        0 10px 30px rgba(70, 40, 30, .20);
+        0 10px 28px rgba(70, 40, 30, .20);
 
     transition:
         transform .3s ease,
@@ -333,63 +546,99 @@ body {
 .botao-abrir:hover {
 
     transform:
-        translate(-50%, -50%)
+        translateX(-50%)
         scale(1.05);
 }
 
 
 /* =====================================================
-   ENVELOPE ABERTO
+   ABERTURA — PRIMEIRO MOVIMENTO
 ===================================================== */
 
-.envelope-container.aberto .aba-superior {
+.cena-envelope.aberto
+.aba-superior {
 
-    transform: rotateX(-180deg);
+    transform:
+        rotateX(-180deg);
 
-    z-index: 2;
-}
-
-
-.envelope-container.aberto .aba-esquerda {
-
-    transform: rotateY(-32deg);
-
-    z-index: 2;
-}
-
-
-.envelope-container.aberto .aba-direita {
-
-    transform: rotateY(32deg);
-
-    z-index: 2;
-}
-
-
-.envelope-container.aberto .aba-frente {
-
-    opacity: 0;
-
-    transition-delay: .35s;
+    z-index: 3;
 }
 
 
 /* =====================================================
-   CONVITE SAINDO
+   ABERTURA — LATERAIS
 ===================================================== */
 
-.envelope-container.aberto .convite-papel {
+.cena-envelope.aberto
+.aba-esquerda {
 
     transform:
-        translateY(-55%)
-        scale(1.02);
+        rotateY(-28deg);
 
-    z-index: 10;
+    z-index: 3;
+}
+
+
+.cena-envelope.aberto
+.aba-direita {
+
+    transform:
+        rotateY(28deg);
+
+    z-index: 3;
+}
+
+
+/* =====================================================
+   ABA INFERIOR ABRE
+===================================================== */
+
+.cena-envelope.aberto
+.aba-inferior {
+
+    transform:
+        translateY(25px);
+
+    opacity: .15;
+}
+
+
+/* =====================================================
+   CONVITE SOBE
+===================================================== */
+
+.cena-envelope.aberto
+.convite-saindo {
+
+    transform:
+        translateY(-48%)
+        scale(1);
 
     box-shadow:
-        0 20px 45px rgba(70, 45, 30, .18);
+        0 25px 55px rgba(65, 43, 32, .20);
 
-    transition-delay: .55s;
+    z-index: 20;
+
+    transition-delay:
+        .65s;
+}
+
+
+/* =====================================================
+   LAÇO DESAPARECE
+===================================================== */
+
+.cena-envelope.aberto
+.laco {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.75);
+
+    transition-delay:
+        .15s;
 }
 
 
@@ -397,7 +646,8 @@ body {
    BOTÃO DESAPARECE
 ===================================================== */
 
-.envelope-container.aberto .botao-abrir {
+.cena-envelope.aberto
+.botao-abrir {
 
     opacity: 0;
 
@@ -406,16 +656,17 @@ body {
 
 
 /* =====================================================
-   ABERTURA TERMINADA
+   SOMBRA
 ===================================================== */
 
-.abertura.finalizada {
+.cena-envelope.aberto
+.sombra-envelope {
 
-    opacity: 0;
+    transform:
+        translateX(-50%)
+        scale(1.25);
 
-    visibility: hidden;
-
-    pointer-events: none;
+    opacity: .08;
 }
 
 
@@ -435,11 +686,12 @@ body {
 
     visibility: hidden;
 
-    transform: translateY(25px);
+    transform:
+        translateY(35px);
 
     transition:
-        opacity 1s ease,
-        transform 1s ease;
+        opacity 1.2s ease,
+        transform 1.2s ease;
 }
 
 
@@ -449,33 +701,8 @@ body {
 
     visibility: visible;
 
-    transform: translateY(0);
-}
-
-
-/* =====================================================
-   ELEMENTOS DECORATIVOS
-===================================================== */
-
-.mini-titulo {
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-
-    color: #93695d;
-}
-
-
-.ornamento {
-
-    color: #d27a65;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 19px;
-
-    margin: 17px 0;
+    transform:
+        translateY(0);
 }
 
 
@@ -500,9 +727,10 @@ body {
     padding: 12px;
 
     background:
-        rgba(247, 241, 232, 0.94);
+        rgba(247, 241, 232, .94);
 
-    backdrop-filter: blur(12px);
+    backdrop-filter:
+        blur(12px);
 
     border-bottom:
         1px solid #e4d6c9;
@@ -529,7 +757,7 @@ body {
 
     cursor: pointer;
 
-    transition: 0.3s;
+    transition: .3s;
 }
 
 
@@ -586,22 +814,49 @@ body {
 
 
 /* =====================================================
-   INÍCIO
+   TEXTOS
 ===================================================== */
+
+.mini-titulo {
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: #93695d;
+}
+
+
+.ornamento {
+
+    color: #d27a65;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 19px;
+
+    margin: 17px 0;
+}
+
 
 .titulo-principal {
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
-    font-size: clamp(110px, 25vw, 180px);
+    font-size:
+        clamp(110px, 25vw, 180px);
 
-    line-height: 0.65;
+    line-height: .65;
 
     font-weight: 400;
 
     color: #d47a64;
 
-    opacity: 0.9;
+    opacity: .9;
 
     margin-top: 25px;
 }
@@ -609,7 +864,9 @@ body {
 
 .titulo-anos {
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size: 40px;
 
@@ -623,9 +880,12 @@ body {
 
 .capitulo {
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
-    font-size: clamp(38px, 8vw, 65px);
+    font-size:
+        clamp(38px, 8vw, 65px);
 
     font-weight: 500;
 
@@ -649,8 +909,25 @@ body {
 }
 
 
+.titulo-secao {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(50px, 10vw, 75px);
+
+    font-weight: 500;
+
+    color: #704c43;
+
+    margin-top: 12px;
+}
+
+
 /* =====================================================
-   BOTÕES
+   BOTÕES DO SITE
 ===================================================== */
 
 .botao {
@@ -679,34 +956,17 @@ body {
 
     cursor: pointer;
 
-    transition: 0.3s;
+    transition: .3s;
 }
 
 
 .botao:hover {
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
     box-shadow:
-        0 8px 20px rgba(70, 40, 30, 0.15);
-}
-
-
-/* =====================================================
-   TÍTULOS DAS SEÇÕES
-===================================================== */
-
-.titulo-secao {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(50px, 10vw, 75px);
-
-    font-weight: 500;
-
-    color: #704c43;
-
-    margin-top: 12px;
+        0 8px 20px rgba(70, 40, 30, .15);
 }
 
 
@@ -734,7 +994,7 @@ body {
     z-index: 10;
 
     background:
-        rgba(255, 253, 248, 0.96);
+        rgba(255, 253, 248, .96);
 
     border:
         1px solid #e4d7ca;
@@ -742,7 +1002,7 @@ body {
     padding: 35px 18px;
 
     box-shadow:
-        0 10px 30px rgba(70, 45, 30, 0.08);
+        0 10px 30px rgba(70, 45, 30, .08);
 }
 
 
@@ -760,7 +1020,9 @@ body {
 
 .card h3 {
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size: 28px;
 
@@ -797,19 +1059,21 @@ body {
     padding: 45px 30px;
 
     background:
-        rgba(255, 253, 248, 0.96);
+        rgba(255, 253, 248, .96);
 
     border:
         1px solid #e3d4c7;
 
     box-shadow:
-        0 15px 35px rgba(70, 45, 30, 0.08);
+        0 15px 35px rgba(70, 45, 30, .08);
 }
 
 
 .caixa h3 {
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size: 42px;
 
@@ -830,7 +1094,7 @@ body {
 
 
 /* =====================================================
-   PALETA TROPICAL
+   PALETA
 ===================================================== */
 
 .paleta {
@@ -881,10 +1145,6 @@ body {
 }
 
 
-/* =====================================================
-   OBSERVAÇÃO
-===================================================== */
-
 .observacao {
 
     font-size: 10px;
@@ -896,32 +1156,8 @@ body {
 
 
 /* =====================================================
-   CONTAGEM REGRESSIVA
+   CONTADOR
 ===================================================== */
-
-.contador-section {
-
-    position: relative;
-
-    z-index: 2;
-
-    min-height: 70vh;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 80px 25px;
-
-    background: transparent;
-
-    overflow: hidden;
-}
-
 
 .contador {
 
@@ -945,7 +1181,7 @@ body {
 .contador div {
 
     background:
-        rgba(250, 246, 237, 0.96);
+        rgba(250, 246, 237, .96);
 
     border:
         1px solid #ddcec0;
@@ -960,7 +1196,9 @@ body {
 
     display: block;
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size: 48px;
 
@@ -1004,17 +1242,18 @@ body {
 
     padding: 80px 30px;
 
-    overflow: hidden;
-
     background: transparent;
 }
 
 
 .final h2 {
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
-    font-size: clamp(40px, 8vw, 68px);
+    font-size:
+        clamp(40px, 8vw, 68px);
 
     font-weight: 500;
 
@@ -1030,7 +1269,9 @@ body {
 
 .coracao {
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size: 48px;
 
@@ -1042,7 +1283,9 @@ body {
 
 .assinatura {
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size: 30px;
 
@@ -1062,44 +1305,41 @@ body {
 
         object-position: center;
 
-        opacity: 0.88;
+        opacity: .88;
     }
 
 
-    .envelope-container {
+    .cena-envelope {
 
-        width: 92vw;
+        width: 84vw;
 
-        height: 61.3vw;
+        height: 135vw;
 
-        max-width: 430px;
+        max-width: 390px;
 
-        max-height: 287px;
+        max-height: 590px;
     }
 
 
-    .convite-papel {
+    .envelope {
 
-        left: 9%;
-
-        width: 82%;
-
-        height: 94%;
+        height: 72%;
     }
 
 
-    .menu {
+    .convite-saindo {
 
-        justify-content: flex-start;
+        left: 7%;
+
+        width: 86%;
     }
 
 
-    .pagina {
+    .laco {
 
-        min-height: 90vh;
-
-        padding:
-            80px 25px;
+        transform:
+            translate(-50%, -50%)
+            scale(.85);
     }
 
 
@@ -1139,6 +1379,22 @@ body {
 
 
 @media (max-width: 400px) {
+
+    .botao-abrir {
+
+        font-size: 8px;
+
+        padding: 13px 21px;
+    }
+
+
+    .laco {
+
+        transform:
+            translate(-50%, -50%)
+            scale(.72);
+    }
+
 
     .contador strong {
 
