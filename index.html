@@ -4,32 +4,28 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Anna Caroline | 18 Anos</title>
+    <title>Anna Caroline — 18 Anos</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap"
+          rel="stylesheet">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
 
-
-    <!-- =====================================================
-         FLORES FIXAS
-         ESSA É A ÚNICA IMAGEM DE FLORES DO SITE
-    ====================================================== -->
+    <!-- =================================================
+         FLORES DE FUNDO
+    ================================================== -->
 
     <img
         src="imagens/flores.jpg"
@@ -38,46 +34,113 @@
     >
 
 
-    <!-- ABERTURA DO CONVITE -->
-<section class="abertura" id="abertura">
+    <!-- =================================================
+         ABERTURA
+    ================================================== -->
 
-    <div class="envelope-container" id="envelope">
+    <section class="abertura" id="abertura">
 
-        <!-- CONVITE DENTRO DO ENVELOPE -->
-        <div class="convite-papel">
-            <img src="imagens/capa.jpg" alt="Convite de 18 anos">
+        <div class="cena-envelope" id="envelope">
+
+
+            <!-- SOMBRA -->
+
+            <div class="sombra-envelope"></div>
+
+
+            <!-- =================================================
+                 CONVITE DENTRO DO ENVELOPE
+            ================================================== -->
+
+            <div class="convite-saindo">
+
+                <img
+                    src="imagens/capa.jpg"
+                    alt="Convite de 18 anos"
+                >
+
+            </div>
+
+
+            <!-- =================================================
+                 ENVELOPE
+            ================================================== -->
+
+            <div class="envelope">
+
+
+                <!-- Fundo -->
+
+                <div class="envelope-fundo"></div>
+
+
+                <!-- Aba traseira -->
+
+                <div class="aba-traseira"></div>
+
+
+                <!-- Aba esquerda -->
+
+                <div class="aba-esquerda"></div>
+
+
+                <!-- Aba direita -->
+
+                <div class="aba-direita"></div>
+
+
+                <!-- Aba inferior -->
+
+                <div class="aba-inferior"></div>
+
+
+                <!-- Aba superior -->
+
+                <div class="aba-superior"></div>
+
+
+                <!-- =================================================
+                     LAÇO
+                ================================================== -->
+
+                <div class="laco">
+
+                    <div class="laco-esquerdo"></div>
+
+                    <div class="laco-direito"></div>
+
+                    <div class="laco-centro"></div>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTÃO
+                ================================================== -->
+
+                <button
+                    class="botao-abrir"
+                    id="abrir"
+                    type="button"
+                >
+                    ABRIR CONVITE
+                </button>
+
+            </div>
+
         </div>
 
-        <!-- PARTE DE TRÁS -->
-        <div class="envelope-fundo"></div>
-
-        <!-- ABA SUPERIOR -->
-        <div class="aba-superior"></div>
-
-        <!-- ABA ESQUERDA -->
-        <div class="aba-esquerda"></div>
-
-        <!-- ABA DIREITA -->
-        <div class="aba-direita"></div>
-
-        <!-- PARTE DA FRENTE -->
-        <div class="aba-frente"></div>
-
-        <!-- BOTÃO -->
-        <button class="botao-abrir" id="abrir">
-            ABRIR CONVITE
-        </button>
-
-    </div>
-
-</section>
+    </section>
 
 
-    <!-- =====================================================
+    <!-- =================================================
          CONVITE PRINCIPAL
-    ====================================================== -->
+    ================================================== -->
 
-    <main class="convite" id="convite">
+    <main
+        class="convite"
+        id="convite"
+    >
 
 
         <!-- =================================================
@@ -99,7 +162,7 @@
             </button>
 
             <button onclick="mostrarSecao('confirmacao')">
-                Confirmar
+                Confirmação
             </button>
 
             <button onclick="mostrarSecao('playlist')">
@@ -107,11 +170,14 @@
             </button>
 
             <button onclick="mostrarSecao('localizacao')">
-                Localização
+                Local
+            </button>
+
+            <button onclick="mostrarSecao('contagem')">
+                Contagem
             </button>
 
         </nav>
-
 
 
         <!-- =================================================
@@ -126,49 +192,44 @@
             <div class="conteudo">
 
                 <p class="mini-titulo">
-                    ANNA CAROLINE
+                    VOCÊ ESTÁ CONVIDADO
                 </p>
 
+                <div class="ornamento">
+                    ✦
+                </div>
 
                 <h1 class="titulo-principal">
                     18
                 </h1>
 
-
                 <h2 class="titulo-anos">
-                    Anos
+                    ANOS
                 </h2>
 
-
                 <div class="ornamento">
-                    ───── ♡ ─────
+                    ✦
                 </div>
 
-
                 <h3 class="capitulo">
-                    Um novo capítulo
-                    <br>
-                    começa...
+                    Um novo capítulo começa...
                 </h3>
 
-
                 <p class="texto">
-                    Mal posso esperar para viver
-                    esse momento com você.
+                    Quero comemorar esse momento tão especial
+                    ao lado das pessoas que fazem parte da minha história.
                 </p>
-
 
                 <button
                     class="botao"
                     onclick="mostrarSecao('informacoes')"
                 >
-                    VER O CONVITE
+                    VER CONVITE
                 </button>
 
             </div>
 
         </section>
-
 
 
         <!-- =================================================
@@ -186,14 +247,12 @@
                     ANOTE NA AGENDA
                 </p>
 
-
                 <h2 class="titulo-secao">
                     Informações
                 </h2>
 
-
                 <div class="ornamento">
-                    ───── ♡ ─────
+                    ✦
                 </div>
 
 
@@ -220,7 +279,7 @@
                     <div class="card">
 
                         <span class="icone">
-                            ♡
+                            ◷
                         </span>
 
                         <h3>
@@ -237,7 +296,7 @@
                     <div class="card">
 
                         <span class="icone">
-                            ♡
+                            ✦
                         </span>
 
                         <h3>
@@ -250,13 +309,11 @@
 
                     </div>
 
-
                 </div>
 
             </div>
 
         </section>
-
 
 
         <!-- =================================================
@@ -271,17 +328,15 @@
             <div class="conteudo">
 
                 <p class="mini-titulo">
-                    PARA COMBINAR COM A FESTA
+                    VISTA-SE PARA A OCASIÃO
                 </p>
-
 
                 <h2 class="titulo-secao">
                     Dress Code
                 </h2>
 
-
                 <div class="ornamento">
-                    ───── ♡ ─────
+                    ✦
                 </div>
 
 
@@ -291,10 +346,9 @@
                         Tropical
                     </h3>
 
-
                     <p>
-                        Cores quentes, estampas tropicais
-                        e muita personalidade.
+                        Cores quentes, estampas tropicais,
+                        flores e muita personalidade.
                     </p>
 
 
@@ -308,12 +362,16 @@
 
                     </div>
 
+
+                    <p class="observacao">
+                        Venha confortável e pronto para curtir!
+                    </p>
+
                 </div>
 
             </div>
 
         </section>
-
 
 
         <!-- =================================================
@@ -331,41 +389,44 @@
                     SUA PRESENÇA É MUITO IMPORTANTE
                 </p>
 
-
                 <h2 class="titulo-secao">
-                    Confirme sua presença
+                    Confirmação
                 </h2>
 
-
                 <div class="ornamento">
-                    ───── ♡ ─────
+                    ✦
                 </div>
 
 
-                <p class="texto">
-                    Preencha o formulário para confirmar
-                    sua presença na festa.
-                </p>
+                <div class="caixa">
 
+                    <h3>
+                        Você vem?
+                    </h3>
 
-                <a
-                    href="SEU_LINK_DO_GOOGLE_FORMS"
-                    target="_blank"
-                    class="botao"
-                >
-                    CONFIRMAR PRESENÇA
-                </a>
+                    <p>
+                        Confirme sua presença através do formulário
+                        até a data indicada.
+                    </p>
 
+                    <a
+                        href="SEU_LINK_DO_GOOGLE_FORMS"
+                        class="botao"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        CONFIRMAR PRESENÇA
+                    </a>
 
-                <p class="observacao">
-                    Cada família deve realizar apenas
-                    uma confirmação.
-                </p>
+                    <p class="observacao">
+                        Convidado não convida 💗
+                    </p>
+
+                </div>
 
             </div>
 
         </section>
-
 
 
         <!-- =================================================
@@ -380,38 +441,43 @@
             <div class="conteudo">
 
                 <p class="mini-titulo">
-                    VAMOS MONTAR A TRILHA DA FESTA
+                    VAMOS CRIAR A TRILHA DA FESTA
                 </p>
-
 
                 <h2 class="titulo-secao">
                     Playlist
                 </h2>
 
-
                 <div class="ornamento">
-                    ───── ♡ ─────
+                    ♫
                 </div>
 
 
-                <p class="texto">
-                    Tem aquela música que não pode faltar?
-                    Adicione à playlist!
-                </p>
+                <div class="caixa">
 
+                    <h3>
+                        Escolha uma música
+                    </h3>
 
-                <a
-                    href="SEU_LINK_DO_SPOTIFY"
-                    target="_blank"
-                    class="botao"
-                >
-                    ♫ ADICIONAR MÚSICA
-                </a>
+                    <p>
+                        Quer deixar sua música favorita
+                        na playlist da festa?
+                    </p>
+
+                    <a
+                        href="SEU_LINK_DO_SPOTIFY"
+                        class="botao"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        ADICIONAR MÚSICA
+                    </a>
+
+                </div>
 
             </div>
 
         </section>
-
 
 
         <!-- =================================================
@@ -429,14 +495,12 @@
                     ESPERO VOCÊ LÁ
                 </p>
 
-
                 <h2 class="titulo-secao">
                     Localização
                 </h2>
 
-
                 <div class="ornamento">
-                    ───── ♡ ─────
+                    ♡
                 </div>
 
 
@@ -446,18 +510,18 @@
                         Chácara
                     </h3>
 
-
                     <p>
-                        O endereço da festa aparecerá aqui.
+                        O endereço completo e as orientações
+                        estarão disponíveis pelo mapa.
                     </p>
-
 
                     <a
                         href="SEU_LINK_DO_GOOGLE_MAPS"
-                        target="_blank"
                         class="botao"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
-                        COMO CHEGAR
+                        ABRIR NO MAPA
                     </a>
 
                 </div>
@@ -467,12 +531,14 @@
         </section>
 
 
-
         <!-- =================================================
-             CONTAGEM REGRESSIVA
+             CONTAGEM
         ================================================== -->
 
-        <section class="contador-section">
+        <section
+            class="pagina"
+            id="contagem"
+        >
 
             <div class="conteudo">
 
@@ -480,21 +546,19 @@
                     FALTA POUCO
                 </p>
 
-
                 <h2 class="titulo-secao">
-                    Contagem regressiva
+                    Contagem
                 </h2>
 
-
                 <div class="ornamento">
-                    ───── ♡ ─────
+                    ✦
                 </div>
 
 
                 <div class="contador">
 
-
                     <div>
+
                         <strong id="dias">
                             00
                         </strong>
@@ -502,10 +566,12 @@
                         <span>
                             Dias
                         </span>
+
                     </div>
 
 
                     <div>
+
                         <strong id="horas">
                             00
                         </strong>
@@ -513,10 +579,12 @@
                         <span>
                             Horas
                         </span>
+
                     </div>
 
 
                     <div>
+
                         <strong id="minutos">
                             00
                         </strong>
@@ -524,10 +592,12 @@
                         <span>
                             Minutos
                         </span>
+
                     </div>
 
 
                     <div>
+
                         <strong id="segundos">
                             00
                         </strong>
@@ -535,8 +605,8 @@
                         <span>
                             Segundos
                         </span>
-                    </div>
 
+                    </div>
 
                 </div>
 
@@ -545,9 +615,8 @@
         </section>
 
 
-
         <!-- =================================================
-             MENSAGEM FINAL
+             FINAL
         ================================================== -->
 
         <section class="final">
@@ -555,20 +624,22 @@
             <div class="conteudo">
 
                 <p class="mini-titulo">
-                    COM CARINHO
+                    ATÉ LÁ...
                 </p>
-
 
                 <div class="coracao">
                     ♡
                 </div>
 
-
                 <h2>
                     Mal posso esperar para
-                    viver esse momento com você.
+                    viver esse momento
+                    com você.
                 </h2>
 
+                <div class="ornamento">
+                    ✦
+                </div>
 
                 <p class="assinatura">
                     Anna Caroline
@@ -582,6 +653,9 @@
     </main>
 
 
+    <!-- =================================================
+         JAVASCRIPT
+    ================================================== -->
 
     <script src="script.js"></script>
 
